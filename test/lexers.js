@@ -68,3 +68,34 @@ exports['integer'] = function (test) {
     test.equal(lexer.next(), null);
 };
 
+exports['string'] = function (test) {
+    const lexer = lexers.lexer('"foo"');
+  
+    const token = lexer.next();
+    
+    test.ok(token);
+    test.equal(token.value, 'foo');
+    test.equal(token.type, TokenType.String);
+    
+    test.equal(lexer.next(), null);
+};
+
+exports['string and name'] = function (test) {
+    const lexer = lexers.lexer('"foo" bar');
+  
+    var token = lexer.next();
+    
+    test.ok(token);
+    test.equal(token.value, 'foo');
+    test.equal(token.type, TokenType.String);
+  
+    var token = lexer.next();
+    
+    test.ok(token);
+    test.equal(token.value, 'bar');
+    
+    test.equal(token.type, TokenType.Name);
+    
+    test.equal(lexer.next(), null);
+};
+
