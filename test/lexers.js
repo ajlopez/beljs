@@ -117,4 +117,34 @@ exports['parentheses as delimiters'] = function (test) {
     test.equal(lexer.next(), null);
 };
 
+exports['first token skipping comment'] = function (test) {
+    const lexer = lexers.lexer('; a comment \r\nfoo');
+  
+    const token = lexer.next();
+    
+    test.ok(token);
+    test.equal(token.value, 'foo');
+    test.equal(token.type, TokenType.Name);
+    
+    test.equal(lexer.next(), null);
+};
+
+exports['two tokens skipping comment'] = function (test) {
+    const lexer = lexers.lexer('foo; a comment \r\nbar');
+  
+    const token = lexer.next();
+    
+    test.ok(token);
+    test.equal(token.value, 'foo');
+    test.equal(token.type, TokenType.Name);
+    
+    const token2 = lexer.next();
+    
+    test.ok(token2);
+    test.equal(token2.value, 'bar');
+    test.equal(token2.type, TokenType.Name);
+    
+    test.equal(lexer.next(), null);
+};
+
 
