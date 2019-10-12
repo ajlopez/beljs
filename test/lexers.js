@@ -99,3 +99,22 @@ exports['string and name'] = function (test) {
     test.equal(lexer.next(), null);
 };
 
+exports['parentheses as delimiters'] = function (test) {
+    const lexer = lexers.lexer('()');
+  
+    var token = lexer.next();
+    
+    test.ok(token);
+    test.equal(token.value, '(');
+    test.equal(token.type, TokenType.Delimiter);
+  
+    var token = lexer.next();
+    
+    test.ok(token);
+    test.equal(token.value, ')');
+    test.equal(token.type, TokenType.Delimiter);
+    
+    test.equal(lexer.next(), null);
+};
+
+
