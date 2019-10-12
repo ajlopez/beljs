@@ -1,0 +1,30 @@
+{
+  "name": "beljs",
+  "description": "Bel programming language (Lisp) implemented in JavaScript, WIP",
+  "keywords": [
+    "monkey",
+    "interpreter",
+    "programming"
+  ],
+  "version": "0.0.1alpha",
+  "author": "Angel 'Java' Lopez <webmaster@ajlopez.com> (http://www.ajlopez.com)",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ajlopez/beljs.git"
+  },
+  "main": "./lib/beljs.js",
+  "engines": {
+    "node": ">= 8.0.0"
+  },
+  "scripts": {
+    "test": "simpleunit ./test -r"
+  },
+  "dependencies": {
+    "geast": "0.0.9",
+    "gelex": "0.0.7",
+    "gepars": "0.0.6"
+  },
+  "devDependencies": {
+    "simpleunit": "0.0.8"
+  }
+}
