@@ -19,3 +19,9 @@ exports['create list with three elements'] = function (test) {
     test.equal(result.tail().tail().tail(), null);
 };
 
+exports['create list with zero elements as nil'] = function (test) {
+    const result = lists.list([]);
+    
+    test.strictEqual(result, null);
+};
+
