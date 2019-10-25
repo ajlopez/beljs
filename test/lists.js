@@ -35,3 +35,12 @@ exports['create list with three elements and non nil tail'] = function (test) {
     test.equal(result.tail().tail().tail(), 4);
 };
 
+exports['is list'] = function (test) {
+    test.equal(lists.isList(null), true);
+    test.equal(lists.isList(lists.list([1, 2, 3])), true);
+    test.equal(lists.isList(lists.list([1, 2, 3], 4)), true);
+    
+    test.equal(lists.isList(0), false);
+    test.equal(lists.isList('foo'), false);
+};
+
