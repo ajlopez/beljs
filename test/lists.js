@@ -44,3 +44,10 @@ exports['is list'] = function (test) {
     test.equal(lists.isList('foo'), false);
 };
 
+exports['to string'] = function (test) {
+    test.equal(lists.toString(null), "nil");
+    test.equal(lists.toString(lists.list([1, 2, 3])), '(1 2 3)');
+    test.equal(lists.toString(lists.list([1, 2, 3], 4)), '(1 2 3 . 4)');
+    test.equal(lists.toString(lists.list([lists.list([1]), 2, 3], 4)), '((1) 2 3 . 4)');
+};
+
