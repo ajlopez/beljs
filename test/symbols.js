@@ -9,3 +9,13 @@ exports['create symbol'] = function (test) {
     test.equal(result.toString(), 'foo');
 };
 
+exports['cannot create symbol with name not string'] = function (test) {
+    try {
+        symbols.symbol(42);
+    }
+    catch (ex) {
+        return;
+    }
+    
+    test.fail();
+};
