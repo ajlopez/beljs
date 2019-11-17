@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "gelex": "0.0.7",
-    "gepars": "0.0.7"
+    "gepars": "0.0.8"
   },
   "devDependencies": {
     "simpleunit": "0.0.8"

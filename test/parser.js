@@ -29,8 +29,7 @@ exports['parse simple expressions'] = function (test) {
     parse(test, 'expression', '42', 42);
     parse(test, 'expression', '"foo"', "foo");
     parse(test, 'expression', 't', true);
-    // TODO resolve null return in parser
-    // parse(test, 'expression', 'nil', null);
+    parse(test, 'expression', 'nil', null);
     parse(test, 'expression', 'foo', symbols.symbol('foo'));
 };
 
