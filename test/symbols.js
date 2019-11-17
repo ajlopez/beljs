@@ -19,3 +19,12 @@ exports['cannot create symbol with name not string'] = function (test) {
     
     test.fail();
 };
+
+exports['is symbol'] = function (test) {
+    const foo = symbols.symbol('foo');
+    
+    test.ok(symbols.isSymbol(foo));
+    test.ok(!symbols.isSymbol(42));
+    test.ok(!symbols.isSymbol('foo'));
+};
+
