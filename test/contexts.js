@@ -4,7 +4,7 @@ const contexts = require('../lib/contexts');
 exports['get unknown variable'] = function (test) {
     const context = contexts.context();
     
-    test.equal(context.get('foo'), null);
+    test.strictEqual(context.get('foo'), null);
 };
 
 exports['set and get variable'] = function (test) {
