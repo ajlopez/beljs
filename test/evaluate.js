@@ -33,3 +33,14 @@ exports['evaluate list with primitive function'] = function (test) {
     test.strictEqual(bel.evaluate(list, context), 42);
 }
 
+exports['evaluate list with primitive function and list'] = function (test) {
+    const add = symbols.symbol('add');
+    const context = contexts.context();
+    
+    context.set('add', function (args) { return args[0] + args[1] });
+    
+    const list = lists.list([ add, 1, lists.list([ add, 40, 1 ]) ]);
+    
+    test.strictEqual(bel.evaluate(list, context), 42);
+}
+
