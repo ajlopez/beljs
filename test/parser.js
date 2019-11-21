@@ -37,3 +37,7 @@ exports['parse list'] = function (test) {
     parse(test, 'list', '(foo bar 42)', lists.list([ symbols.symbol('foo'), symbols.symbol('bar'), 42 ]));  
 };
 
+exports['parse list with dot notation'] = function (test) {
+    parse(test, 'list', '(foo . 42)', lists.pair(symbols.symbol('foo'), 42));  
+};
+
