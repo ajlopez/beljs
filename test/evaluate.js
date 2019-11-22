@@ -44,3 +44,14 @@ exports['evaluate list with primitive function and list'] = function (test) {
     test.strictEqual(bel.evaluate(list, context), 42);
 }
 
+exports['evaluate join in top context'] = function (test) {
+    const join = symbols.symbol('join');
+    
+    const list = lists.list([ join, 1, 42 ]);
+    
+    const result = bel.evaluate(list);
+    
+    test.ok(lists.isList(result));
+    test.strictEqual(lists.toString(result), '(1 . 42)');
+}
+
