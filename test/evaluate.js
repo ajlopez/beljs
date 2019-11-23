@@ -55,3 +55,14 @@ exports['evaluate join in top context'] = function (test) {
     test.strictEqual(lists.toString(result), '(1 . 42)');
 }
 
+exports['evaluate join in top context with one argument'] = function (test) {
+    const join = symbols.symbol('join');
+    
+    const list = lists.list([ join, 42 ]);
+    
+    const result = bel.evaluate(list);
+    
+    test.ok(lists.isList(result));
+    test.strictEqual(lists.toString(result), '(42)');
+}
+

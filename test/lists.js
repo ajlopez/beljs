@@ -9,6 +9,14 @@ exports['create pair'] = function (test) {
     test.equal(result.tail(), 2);
 };
 
+exports['create pair without tail'] = function (test) {
+    const result = lists.pair(1);
+    
+    test.ok(result);
+    test.equal(result.head(), 1);
+    test.strictEqual(result.tail(), null);
+};
+
 exports['create list with three elements'] = function (test) {
     const result = lists.list([1, 2, 3]);
     
