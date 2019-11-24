@@ -41,3 +41,10 @@ exports['parse list with dot notation'] = function (test) {
     parse(test, 'list', '(foo . 42)', lists.pair(symbols.symbol('foo'), 42));  
 };
 
+exports['parse quoted expressions'] = function (test) {
+    const quote = symbols.symbol('quote');
+    
+    parse(test, 'expression', "'a", lists.list([ quote, symbols.symbol('a') ]));  
+    parse(test, 'expression', "'(a b)", lists.list([ quote, lists.list([ symbols.symbol('a'), symbols.symbol('b') ]) ]));  
+};
+
