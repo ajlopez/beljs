@@ -66,3 +66,15 @@ exports['evaluate join in top context with one argument'] = function (test) {
     test.strictEqual(lists.toString(result), '(42)');
 }
 
+exports['evaluate quoted symbol using top context'] = function (test) {
+    const quote = symbols.symbol('quote');
+    const foo = symbols.symbol('foo');
+    
+    const list = lists.list([ quote, foo ]);
+    
+    const result = bel.evaluate(list);
+    
+    test.ok(symbols.isSymbol(result));
+    test.strictEqual(result.name(), 'foo');
+}
+
