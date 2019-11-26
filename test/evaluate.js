@@ -78,3 +78,20 @@ exports['evaluate quoted symbol using top context'] = function (test) {
     test.strictEqual(result.name(), 'foo');
 }
 
+exports['evaluate car symbol using top context'] = function (test) {
+    const car = symbols.symbol('car');
+    const quote = symbols.symbol('quote');
+    
+    const list = lists.list([ car, lists.list([ quote, lists.list([42, 1]) ]) ]);
+    
+    test.equal(bel.evaluate(list), 42);
+}
+
+exports['evaluate car symbol over nil'] = function (test) {
+    const car = symbols.symbol('car');
+    
+    const list = lists.list([ car, null ]);
+    
+    test.equal(bel.evaluate(list), null);
+}
+
