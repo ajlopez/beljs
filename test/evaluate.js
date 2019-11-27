@@ -95,3 +95,20 @@ exports['evaluate car symbol over nil'] = function (test) {
     test.equal(bel.evaluate(list), null);
 }
 
+exports['evaluate cdr symbol using top context'] = function (test) {
+    const cdr = symbols.symbol('cdr');
+    const quote = symbols.symbol('quote');
+    
+    const list = lists.list([ cdr, lists.list([ quote, lists.pair(1, 42) ]) ]);
+    
+    test.equal(bel.evaluate(list), 42);
+}
+
+exports['evaluate cdr symbol over nil'] = function (test) {
+    const cdr = symbols.symbol('cdr');
+    
+    const list = lists.list([ cdr, null ]);
+    
+    test.equal(bel.evaluate(list), null);
+}
+
