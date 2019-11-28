@@ -59,3 +59,11 @@ exports['to string'] = function (test) {
     test.equal(lists.toString(lists.list([lists.list([1]), 2, 3], 4)), '((1) 2 3 . 4)');
 };
 
+exports['replace head in pair'] = function (test) {
+    const pair = lists.pair(1, 2);
+    
+    pair.head(42);
+    
+    test.strictEqual(pair.head(), 42);
+};
+
