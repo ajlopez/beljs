@@ -1,6 +1,7 @@
 
 const bel = require('..');
 const contexts = require('../lib/contexts');
+const top = require('../lib/top');
 const symbols = require('../lib/symbols');
 const lists = require('../lib/lists');
 
@@ -110,5 +111,22 @@ exports['evaluate cdr symbol over nil'] = function (test) {
     const list = lists.list([ cdr, null ]);
     
     test.equal(bel.evaluate(list), null);
+}
+
+exports['evaluate xar symbol'] = function (test) {
+    const value = lists.list([2, 1]);
+    const xar = symbols.symbol('xar');
+    const x = symbols.symbol('x');
+    
+    const context = contexts.context(top);
+    context.set('x', value);
+    
+    const list = lists.list([ xar, 42, x ]);
+    
+    const result = bel.evaluate(list, context);
+    
+    test.ok(result);
+    test.ok(lists.isList(result));
+    test.equal(lists.toString(result), '(42 1)');
 }
 
