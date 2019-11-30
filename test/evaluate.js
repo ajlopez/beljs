@@ -4,6 +4,18 @@ const contexts = require('../lib/contexts');
 const top = require('../lib/top');
 const symbols = require('../lib/symbols');
 const lists = require('../lib/lists');
+const parser = require('../lib/parser');
+
+function evaluate(test, text, expected, context) {
+    const expression = parser.parse('expression', text);
+    
+    const result = bel.evaluate(expression, context);
+    
+    if (result !== null && lists.isList(result))
+        test.strictEqual(lists.toString(result), expected);
+    else
+        test.strictEqual(result, expected);
+}
 
 exports['evaluate constants'] = function (test) {
     test.equal(bel.evaluate(42), 42);
@@ -128,5 +140,12 @@ exports['evaluate xar symbol'] = function (test) {
     test.ok(result);
     test.ok(lists.isList(result));
     test.equal(lists.toString(result), '(42 1)');
+}
+
+exports['evaluate list primitive function'] = function (test) {
+    evaluate(test, '(list)', null);
+    evaluate(test, "(list 1 42)", '(1 42)');
+    evaluate(test, "(list 'a)", '(a)');
+    evaluate(test, "(list 'a 'b)", '(a b)');
 }
 
