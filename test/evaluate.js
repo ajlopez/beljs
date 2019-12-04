@@ -149,3 +149,7 @@ exports['evaluate list primitive function'] = function (test) {
     evaluate(test, "(list 'a 'b)", '(a b)');
 }
 
+exports['evaluate fn apply'] = function (test) {
+    evaluate(test, '((fn (x y) (join x y)) 42 1)', '(42 . 1)');
+}
+
