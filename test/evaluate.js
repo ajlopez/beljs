@@ -153,3 +153,19 @@ exports['evaluate fn apply'] = function (test) {
     evaluate(test, '((fn (x y) (join x y)) 42 1)', '(42 . 1)');
 }
 
+exports['evaluate set one name and value'] = function (test) {
+    evaluate(test, '(set answer 42)', 42);
+    evaluate(test, 'answer', 42);
+}
+
+exports['evaluate set one name and list value'] = function (test) {
+    evaluate(test, '(set answer (join 42 1))', '(42 . 1)');
+    evaluate(test, 'answer', '(42 . 1)');
+}
+
+exports['evaluate set two names and values'] = function (test) {
+    evaluate(test, '(set one 1 answer 42)', 42);
+    evaluate(test, 'one', 1);
+    evaluate(test, 'answer', 42);
+}
+
