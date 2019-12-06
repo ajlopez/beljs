@@ -24,3 +24,13 @@ exports['set variable in parent and get variable in child context'] = function (
     test.equal(context.get('answer'), 42);
 };
 
+exports['set global variable'] = function (test) {
+    const parent = contexts.context();
+    const context = contexts.context(parent);
+    
+    context.setGlobal('answer', 42);
+    
+    test.equal(context.get('answer'), 42);
+    test.equal(parent.get('answer'), 42);
+};
+
