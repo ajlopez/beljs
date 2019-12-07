@@ -169,3 +169,13 @@ exports['evaluate set two names and values'] = function (test) {
     evaluate(test, 'answer', 42);
 }
 
+exports['evaluate empty list as nil'] = function (test) {
+    evaluate(test, '()', null);
+}
+
+exports['evaluate set two names and values in a function'] = function (test) {
+    evaluate(test, '((fn (x y) (set one x answer y)) 1 42)', 42);
+    evaluate(test, 'one', 1);
+    evaluate(test, 'answer', 42);
+}
+
