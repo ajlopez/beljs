@@ -8,13 +8,14 @@ function parse(test, type, text, expected) {
     
     if (symbols.isSymbol(result) && symbols.isSymbol(expected))
         test.strictEqual(result.name(), expected.name());
-    else if (lists.isList(result) && lists.isList(expected))
+    else if (result && lists.isList(result) && lists.isList(expected))
         test.strictEqual(lists.toString(result), lists.toString(expected));
     else
         test.deepEqual(result, expected);
 }
 
 exports['parse constants'] = function (test) {
+    console.log('nil', parser.parse('literal', 'nil'));
     parse(test, 'integer', '42', 42);
     parse(test, 'string', '"foo"', "foo");
     parse(test, 'literal', 't', true);
@@ -46,5 +47,9 @@ exports['parse quoted expressions'] = function (test) {
     
     parse(test, 'expression', "'a", lists.list([ quote, symbols.symbol('a') ]));  
     parse(test, 'expression', "'(a b)", lists.list([ quote, lists.list([ symbols.symbol('a'), symbols.symbol('b') ]) ]));  
+};
+
+exports['parse empty list'] = function (test) {
+    test.equal(parser.parse('expression', '()'), null);
 };
 

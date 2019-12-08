@@ -179,3 +179,9 @@ exports['evaluate set two names and values in a function'] = function (test) {
     evaluate(test, 'answer', 42);
 }
 
+exports['evaluate set two names and values in a function without parameters'] = function (test) {
+    evaluate(test, '((fn () (set one 1 answer 42)))', 42);
+    evaluate(test, 'one', 1);
+    evaluate(test, 'answer', 42);
+}
+
