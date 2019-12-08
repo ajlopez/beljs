@@ -5,6 +5,7 @@ const top = require('../lib/top');
 const symbols = require('../lib/symbols');
 const lists = require('../lib/lists');
 const parser = require('../lib/parser');
+const fns = require('../lib/fns');
 
 function evaluate(test, text, expected, context) {
     const expression = parser.parse('expression', text);
@@ -183,5 +184,12 @@ exports['evaluate set two names and values in a function without parameters'] = 
     evaluate(test, '((fn () (set one 1 answer 42)))', 42);
     evaluate(test, 'one', 1);
     evaluate(test, 'answer', 42);
+}
+
+exports['define function and apply it'] = function (test) {
+    const expression = parser.parse('expression', '(def cons (x y) (join x y))');  
+    bel.evaluate(expression);
+    
+    evaluate(test, '(cons 42 1 )', '(42 . 1)');
 }
 
