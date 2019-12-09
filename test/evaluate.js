@@ -193,3 +193,8 @@ exports['define function and apply it'] = function (test) {
     evaluate(test, '(cons 42 1 )', '(42 . 1)');
 }
 
+exports['evaluate do'] = function (test) {
+    evaluate(test, '(do 1 2 3 42)', 42);
+    evaluate(test, '(do 1 2 3 (join 42 1))', '(42 . 1)');
+}
+
