@@ -198,3 +198,10 @@ exports['evaluate do'] = function (test) {
     evaluate(test, '(do 1 2 3 (join 42 1))', '(42 . 1)');
 }
 
+exports['evaluate +'] = function (test) {
+    evaluate(test, '(+ 40 2)', 42);
+    evaluate(test, '(+)', 0);
+    evaluate(test, '(+ 2)', 2);
+    evaluate(test, '(+ 2 (+ 20 20))', 42);
+}
+
