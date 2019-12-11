@@ -205,3 +205,10 @@ exports['evaluate +'] = function (test) {
     evaluate(test, '(+ 2 (+ 20 20))', 42);
 }
 
+exports['evaluate -'] = function (test) {
+    evaluate(test, '(- 44 2)', 42);
+    evaluate(test, '(-)', 0);
+    evaluate(test, '(- 2)', 2);
+    evaluate(test, '(- (+ 22 22) 2)', 42);
+}
+
