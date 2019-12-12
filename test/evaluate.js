@@ -212,3 +212,10 @@ exports['evaluate -'] = function (test) {
     evaluate(test, '(- (+ 22 22) 2)', 42);
 }
 
+exports['evaluate *'] = function (test) {
+    evaluate(test, '(* 21 2)', 42);
+    evaluate(test, '(*)', 1);
+    evaluate(test, '(* 2)', 2);
+    evaluate(test, '(* (+ 10 11) 2)', 42);
+}
+
