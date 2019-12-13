@@ -214,8 +214,17 @@ exports['evaluate -'] = function (test) {
 
 exports['evaluate *'] = function (test) {
     evaluate(test, '(* 21 2)', 42);
+    evaluate(test, '(* 7 3 2)', 42);
     evaluate(test, '(*)', 1);
     evaluate(test, '(* 2)', 2);
     evaluate(test, '(* (+ 10 11) 2)', 42);
+}
+
+exports['evaluate /'] = function (test) {
+    evaluate(test, '(/ 84 2)', 42);
+    evaluate(test, '(/ 168 2 2)', 42);
+    evaluate(test, '(/)', 1);
+    evaluate(test, '(/ 2)', 2);
+    evaluate(test, '(/ (+ 64 20) 2)', 42);
 }
 
