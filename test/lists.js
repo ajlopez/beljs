@@ -67,3 +67,11 @@ exports['replace head in pair'] = function (test) {
     test.strictEqual(pair.head(), 42);
 };
 
+exports['replace tail in pair'] = function (test) {
+    const pair = lists.pair(1, 2);
+    
+    pair.tail(42);
+    
+    test.strictEqual(pair.tail(), 42);
+};
+
