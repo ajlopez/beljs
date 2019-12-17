@@ -143,6 +143,23 @@ exports['evaluate xar symbol'] = function (test) {
     test.equal(lists.toString(result), '(42 1)');
 }
 
+exports['evaluate xdr symbol'] = function (test) {
+    const value = lists.list([1, 2]);
+    const xdr = symbols.symbol('xdr');
+    const x = symbols.symbol('x');
+    
+    const context = contexts.context(top);
+    context.set('x', value);
+    
+    const list = lists.list([ xdr, 42, x ]);
+    
+    const result = bel.evaluate(list, context);
+    
+    test.ok(result);
+    test.ok(lists.isList(result));
+    test.equal(lists.toString(result), '(1 . 42)');
+}
+
 exports['evaluate list primitive function'] = function (test) {
     evaluate(test, '(list)', null);
     evaluate(test, "(list 1 42)", '(1 42)');
