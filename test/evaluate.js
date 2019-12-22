@@ -245,3 +245,9 @@ exports['evaluate /'] = function (test) {
     evaluate(test, '(/ (+ 64 20) 2)', 42);
 }
 
+exports['evaluate dyn'] = function (test) {
+    evaluate(test, '(dyn x 40 (+ 2 x))', 42, top);
+    
+    test.equal(top.get('x'), null);
+}
+
