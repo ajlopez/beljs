@@ -251,3 +251,9 @@ exports['evaluate dyn'] = function (test) {
     test.equal(top.get('x'), null);
 }
 
+exports['evaluate apply'] = function (test) {
+    evaluate(test, "(apply join 'a 'b)", '(a . b)');
+    evaluate(test, "(apply join '(a b))", '(a . b)');
+    evaluate(test, "(apply join 'a '(b))", '(a . b)');
+}
+
