@@ -257,3 +257,13 @@ exports['evaluate apply'] = function (test) {
     evaluate(test, "(apply join 'a '(b))", '(a . b)');
 }
 
+exports['evaluate sym'] = function (test) {
+    const expression = parser.parse('expression', '(sym "foo")');    
+
+    const result = bel.evaluate(expression);
+
+    test.ok(result);
+    test.ok(symbols.isSymbol(result));
+    test.equal(result.name(), "foo");
+}
+
