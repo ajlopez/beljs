@@ -267,3 +267,12 @@ exports['evaluate sym'] = function (test) {
     test.equal(result.name(), "foo");
 }
 
+exports['evaluate nom'] = function (test) {
+    const expression = parser.parse('expression', "(nom 'foo)");    
+
+    const result = bel.evaluate(expression);
+
+    test.ok(result);
+    test.strictEqual(result, "foo");
+}
+
