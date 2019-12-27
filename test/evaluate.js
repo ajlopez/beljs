@@ -276,3 +276,9 @@ exports['evaluate nom'] = function (test) {
     test.strictEqual(result, "foo");
 }
 
+exports['evaluate lit'] = function (test) {
+    evaluate(test, "(lit a)", '(lit a)');
+    evaluate(test, "(lit a b)", '(lit a b)');
+    evaluate(test, "(lit 1 2 3)", '(lit 1 2 3)');
+}
+
