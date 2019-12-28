@@ -282,3 +282,13 @@ exports['evaluate lit'] = function (test) {
     evaluate(test, "(lit 1 2 3)", '(lit 1 2 3)');
 }
 
+exports['evaluate if'] = function (test) {
+    evaluate(test, "(if t 42 foo)", 42);
+    evaluate(test, "(if t 42)", 42);
+    evaluate(test, "(if nil 42)", null);
+    evaluate(test, "(if t 42 (foo bar))", 42);
+    evaluate(test, "(if nil 1 42)", 42);
+    evaluate(test, "(if nil (foo bar) 42)", 42);
+    evaluate(test, "(if nil 1 nil 2 42)", 42);
+}
+
