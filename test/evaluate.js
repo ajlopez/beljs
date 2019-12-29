@@ -14,6 +14,8 @@ function evaluate(test, text, expected, context) {
     
     if (result !== null && lists.isList(result))
         test.strictEqual(lists.toString(result), expected);
+    else if (symbols.isSymbol(result))
+        test.strictEqual(result.name(), expected.name());
     else
         test.strictEqual(result, expected);
 }
@@ -290,5 +292,11 @@ exports['evaluate if'] = function (test) {
     evaluate(test, "(if nil 1 42)", 42);
     evaluate(test, "(if nil (foo bar) 42)", 42);
     evaluate(test, "(if nil 1 nil 2 42)", 42);
+}
+
+exports['evaluate type'] = function (test) {
+    evaluate(test, "(type 'a)", symbols.symbol('symbol'));
+    evaluate(test, "(type nil)", symbols.symbol('pair'));
+    evaluate(test, "(type '(a b))", symbols.symbol('pair'));
 }
 
